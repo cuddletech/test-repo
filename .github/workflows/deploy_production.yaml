@@ -7,6 +7,7 @@ on:
       - main
     # Deploy on any refs/tags
     tags: 
+      - v*
 
 jobs:
   deploy:
