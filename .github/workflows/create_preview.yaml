@@ -25,12 +25,12 @@ jobs:
       - name: Strip the branchname
         id: step_one
         run: |
-          echo branchname=`echo ${{ env.GITHUB_HEAD_REF }} | sed 's/.*\///'`
-          echo branchname=`echo ${{ env.GITHUB_HEAD_REF }} | sed 's/.*\///'` >> $GITHUB_ENV
+          echo branchname=`echo $GITHUB_HEAD_REF | sed 's/.*\///'`
+          echo branchname=`echo $GITHUB_HEAD_REF | sed 's/.*\///'` >> $GITHUB_ENV
       - name: Show the branchname stripped
         id: step_two
         run: |
-          echo "${{ env.branchname }}"
+          echo "$branchname"
           env
       - uses: mshick/add-pr-comment@v1
         with:
