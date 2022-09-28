@@ -22,10 +22,18 @@ jobs:
       - name: Build environment
         if: success()
         run: echo "Now I will do the creation of an environment...."
+      - name: Strip the branchname
+        id: step_one
+        run: |
+          echo branchname=`echo ${{ env.GITHUB_HEAD_REF }} | sed 's/.*\///'` >> $GITHUB_ENV
+      - name: Show the branchname stripped
+        id: step_two
+        run: |
+          echo "${{ env.branchname }}" 
       - uses: mshick/add-pr-comment@v1
         with:
           message: |
-            **Finished Deployment of Preview Environment**
+            **Finished Deployment of Preview Environment: ${{ env.branchname }}**
             🌏
             !
           repo-token: ${{ secrets.GITHUB_TOKEN }}
