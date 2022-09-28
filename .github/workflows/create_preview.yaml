@@ -10,5 +10,24 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            **Started Deployment of Preview Environment**
+            🌏
+            !
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
       - name: Build environment
+        if: success()
         run: echo "Now I will do the creation of an environment...."
+      - uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            **Finished Deployment of Preview Environment**
+            🌏
+            !
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
