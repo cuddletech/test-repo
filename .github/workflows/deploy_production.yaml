@@ -1,13 +1,9 @@
 name: Deploy to Production
 
 on:
-  push:
-    # Match against refs/heads
-    branches:    
-      - main
-    # Deploy on any refs/tags
-    tags: 
-      - v*
+  release:
+    types: [published]
+  workflow_dispatch
 
 jobs:
   deploy:
@@ -16,4 +12,4 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Do something
-        run: echo "Now I will do the deploy to prod!!!!"
+        run: echo "Now I will do the deploy to prod!!!!  Triggering Event: ${{github.event}}"
