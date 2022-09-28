@@ -22,7 +22,7 @@ jobs:
       - name: Build environment
         if: success()
         run: echo "Now I will do the creation of an environment...."
-           - uses: mshick/add-pr-comment@v1
+      - uses: mshick/add-pr-comment@v1
         with:
           message: |
             **Finished Deployment of Preview Environment**
