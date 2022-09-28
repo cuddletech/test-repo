@@ -1,0 +1,15 @@
+{
+  "error": {
+    "code": 401,
+    "message": "Anonymous caller does not have storage.objects.get access to the Google Cloud Storage object.",
+    "errors": [
+      {
+        "message": "Anonymous caller does not have storage.objects.get access to the Google Cloud Storage object.",
+        "domain": "global",
+        "reason": "required",
+        "locationType": "header",
+        "location": "Authorization"
+      }
+    ]
+  }
+}
