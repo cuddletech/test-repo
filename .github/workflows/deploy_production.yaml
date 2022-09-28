@@ -12,7 +12,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Do something
-        run: |
-	  echo "Now I will do the deploy to prod!!!!"
-	  env
+        run: echo "Now I will do the deploy to prod!!!!"
       
