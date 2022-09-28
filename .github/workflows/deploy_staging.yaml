@@ -1,14 +1,19 @@
-name: Deploy to Staging
+name: Deploy to Staging (Closed PR)
 
+  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#running-your-workflow-when-a-pull-request-merges
 on:
-  push:
-    branches: [main]
+  pull_request:
+    types:
+      - closed
 
 jobs:
-  deploy:
+  deploy_if_merged:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Do something
         run: echo "Now I will do the deploy to staging...."
+      - name: Environment vars
+        run: env
